@@ -49,7 +49,7 @@ public class Anwendersystem{
     		private void initKomponenten(){
 	    		grid.add(lblAnzeige, 1, 0);
 
-	    		lblAnzeige.setFont(Font.font("Arial", FontWeight.BOLD, 20));
+	    		lblAnzeige.setFont(Font.font("Arial", FontWeight.BOLD, 28));
 
 	    		grid.add(txtAnzeige, 1, 1);
 	    		txtAnzeige.setMaxSize(170, 100);
