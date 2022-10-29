@@ -61,14 +61,21 @@ public class Anwendersystem{
     		/* initialisiert die Listener zu den Steuerelementen auf der Maske
     		*/
     		private void initListener(){
+    			btnAnzeige.setOnAction(new EventHandler<ActionEvent>() {
+    	        	@Override
+    	        	public void handle(ActionEvent e) {
+    	                String[] ergebnis = leseKunden();
+    	                zeigeAn(ergebnis);
+    	        	}    
+    	        });
+
     		}
       
    		 /* zeigt den Inhalt des Arrays zeilen in txtAnzeige an. */
     		private void zeigeAn(String[] zeilen){
         		if(zeilen != null){
             		for(int i = 0; i < zeilen.length; i++){
-                			txtAnzeige.insertText(
-txtAnzeige.getText().length(),
+                			txtAnzeige.insertText(txtAnzeige.getText().length(),
                     		zeilen[i] + "\n");
             		}
         		}	
@@ -84,4 +91,26 @@ txtAnzeige.getText().length(),
         		alert.setContentText(meldung);
         		alert.show();
     		}
+    		   private String[] leseKunden(){
+    		         String[] ergebnis = null;
+    		         try{
+    		             ergebnis = this.csvDateiLeser.leseKunden();
+    		         }
+    		         catch(FileNotFoundException fnfExc){
+    		             this.zeigeFehlermeldung("FileNotFoundException",
+    		           	      "Datei wurde nicht gefunden!");
+    		         }
+
+    		         catch(IOException ioExc){
+    		             this.zeigeFehlermeldung("IOException",
+    		                 "Fehler beim Lesen der Datei!");
+    		         }
+    		         catch(Exception exc){
+    		             this.zeigeFehlermeldung("Exception",
+    		                 "Unbekannter Fehler!");
+    		         }
+    		         return ergebnis;
+    		        }
+
+    		
 }

@@ -32,8 +32,7 @@ public class CsvDateiLeser {
     		throws FileNotFoundException, IOException{
     		Vector<String> ergebnis = new Vector<String>();	
     			String zeile = null;
-    		BufferedReader ein 
-        	 	= new BufferedReader(new FileReader("Kunden.csv"));
+    		BufferedReader ein = new BufferedReader(new FileReader("Kunden.csv"));
         	 	zeile = ein.readLine();
         	 	while(zeile != null && zeile.length() != 0){
             	 	ergebnis.add(zeile);
